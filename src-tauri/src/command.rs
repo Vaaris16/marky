@@ -5,7 +5,7 @@ use std::{fs, path::PathBuf};
 pub fn get_file() -> Option<PathBuf> {
     FileDialog::new()
         .add_filter("Markdown Files", &["md"])
-        .set_directory("./")
+        .set_directory("/Users/vaarischitkara/CODE/rust/marky/src/assets")
         .pick_file()
 }
 

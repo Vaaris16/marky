@@ -3,8 +3,9 @@ import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
 import { FilePlusCorner } from "lucide-react";
 
-export default function MDEditor() {
-  const [value, setValue] = useState<string>("");
+export default function MDEditor({
+  value, setValue
+}: { value: string, setValue: (v: string) => void }) {
   const [enableEditor, setEnableEditor] = useState(false);
   const [filePath, setFilePath] = useState("")
 
@@ -31,6 +32,7 @@ export default function MDEditor() {
     editor.addCommand(
       monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE, () => {
         invoke("save_file", { filePath: filePath, content: editor.getValue() })
+        console.log("filePath after save:", filePath);
         console.log("save")
       }
     )
@@ -53,6 +55,7 @@ export default function MDEditor() {
           language="markdown"
           theme="vs-dark"
           value={value}
+          onChange={(new_value) => setValue(new_value ?? "")}
           onMount={onMount}
           options={{
             wordWrap: "on",
