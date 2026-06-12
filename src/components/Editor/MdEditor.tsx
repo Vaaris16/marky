@@ -1,7 +1,10 @@
 import Editor from "@monaco-editor/react";
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
-import { FilePlusCorner } from "lucide-react";
+import { FilePlusCorner, FolderOpen } from "lucide-react";
+
+import "./Data";
+import { Button, NoFileBodyText, NoFileBodyTextBreak, NoFileMainText } from "./Data";
 
 export default function MDEditor({
   value, setValue
@@ -39,12 +42,26 @@ export default function MDEditor({
   }
 
   return (
-    <section className="h-full w-1/2 rounded-3xl overflow-hidden">
+    <section className="h-full w-1/2 rounded-3xl overflow-hidden bg-base-bg">
       {!enableEditor &&
-        <div className="w-full h-full flex flex-col justify-center items-center bg-[#1e1e1e]">
-          <button onClick={openFileExplorer} className="w-30 h-30 rounded-3xl bg-[#2b2b2b] flex flex-col justify-center items-center">
-            <FilePlusCorner color="white" size={64} />
-          </button>
+        <div className="w-full h-full rounded-3xl flex flex-col justify-center items-center gap-3 text-center">
+          <div className="w-17 h-17 bg-icon-bg flex flex-col justify-center items-center rounded-xl">
+            <FilePlusCorner color="var(--color-icon-color)" size={32} />
+          </div>
+
+          <p className="text-text-base text-sm">{NoFileMainText}</p>
+          <p className="text-text-secondary text-xs">{NoFileBodyText}<br />{NoFileBodyTextBreak}</p>
+
+
+          <div className="flex flex-row justify-center items-center gap-2">
+            {Button.map(({ text, icon: Icon, onClickFunction }, index) => (
+
+              <button key={index} onClick={onClickFunction} className="w-25 h-10 flex flex-row justify-center items-center gap-2 rounded-xl text-xs bg-editor-button-bg text-editor-button-text">
+                <Icon size={16} />
+                <p>{text}</p>
+              </button>
+            ))}
+          </div>
         </div>
       }
 

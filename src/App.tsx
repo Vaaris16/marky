@@ -1,6 +1,6 @@
 import { useState } from "react";
-import MDEditor from "./components/MdEditor";
-import MDPreview from "./components/MdPreview";
+import MDEditor from "./components/Editor/MdEditor";
+import MDPreview from "./components/Preview/MdPreview";
 import "github-markdown-css/github-markdown.css";
 
 function App() {

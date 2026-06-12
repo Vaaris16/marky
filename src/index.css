@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@theme {
+  --color-icon-bg: hsl(240, 10%, 12%);
+  --color-base-bg: hsl(240, 9%, 9%);
+  --color-icon-color: hsl(245, 11%, 65%);
+
+  --color-text-base: hsl(248, 11%, 61%);
+  --color-text-secondary: hsl(245, 11%, 39%);
+
+  --color-editor-button-bg: hsl(244, 19%, 16%);
+  --color-editor-button-text: hsl(247, 44%, 61%);
+}
