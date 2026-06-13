@@ -1,8 +1,9 @@
 import { Eye } from "lucide-react";
 import { marked } from "marked";
 import { useEffect, useState } from "react";
+import { NoPreviewBodyText, NoPreviewBodyTextAfterBr, NoPreviewMainText } from "./PreviewData";
 
-export default function MDPreview({ value }: { value: string }) {
+export default function MDPreview({ path, value }: { path: string, value: string }) {
   const [html, setHTML] = useState("");
   const [enablePreview, setEnablePreview] = useState(false);
 
@@ -14,7 +15,7 @@ export default function MDPreview({ value }: { value: string }) {
     }
 
     function setPreview() {
-      if (value != "") {
+      if (path != "") {
         setEnablePreview(true);
       } else {
         setEnablePreview(false);
@@ -23,7 +24,7 @@ export default function MDPreview({ value }: { value: string }) {
 
     getRawHTML();
     setPreview();
-  }, [value])
+  }, [value, path])
 
   console.log(enablePreview);
 
@@ -34,8 +35,8 @@ export default function MDPreview({ value }: { value: string }) {
           <Eye color="var(--color-icon-color)" size={32} />
         </div>
 
-        <p className="text-text-base text-sm">Nothing to preview</p>
-        <p className="text-text-secondary text-xs">Open a file in the editor to see a<br />live preview here</p>
+        <p className="text-text-base text-sm">{NoPreviewMainText}</p>
+        <p className="text-text-secondary text-xs">{NoPreviewBodyText}<br />{NoPreviewBodyTextAfterBr}</p>
 
       </div>}
       {enablePreview && <div className="markdown-body w-full h-full rounded-3xl" dangerouslySetInnerHTML={{ __html: html }}></div>}

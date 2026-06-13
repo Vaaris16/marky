@@ -8,6 +8,12 @@
   --color-text-base: hsl(248, 11%, 61%);
   --color-text-secondary: hsl(245, 11%, 39%);
 
+  --color-borders: hsl(240, 4%, 15%);
+
   --color-editor-button-bg: hsl(244, 19%, 16%);
   --color-editor-button-text: hsl(247, 44%, 61%);
+}
+
+:root {
+  font-family: "Inter", sans-serif;
 }

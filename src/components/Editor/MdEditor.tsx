@@ -1,16 +1,14 @@
 import Editor from "@monaco-editor/react";
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
-import { FilePlusCorner, FolderOpen } from "lucide-react";
+import { FilePlusCorner } from "lucide-react";
 
 import "./Data";
 import { Button, NoFileBodyText, NoFileBodyTextBreak, NoFileMainText } from "./Data";
+import getFile from "../Utilities/GetFile";
 
-export default function MDEditor({
-  value, setValue
-}: { value: string, setValue: (v: string) => void }) {
+export default function MDEditor({ value, setValue, filePath, setFilePath }: { value: string, setValue: (v: string) => void, filePath: string, setFilePath: (path: string) => void }) {
   const [enableEditor, setEnableEditor] = useState(false);
-  const [filePath, setFilePath] = useState("")
 
   useEffect(() => {
     async function loadFile() {
@@ -25,11 +23,10 @@ export default function MDEditor({
 
   }, [filePath])
 
-
-  const openFileExplorer = async () => {
-    const path = await invoke<string>("get_file");
-    setFilePath(path);
+  const openFileExplorer = () => {
+    getFile({ setFilePath });
   }
+
 
   function onMount(editor: any, monaco: any) {
     editor.addCommand(
