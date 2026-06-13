@@ -54,18 +54,20 @@ export default function MDEditor({
 
 
           <div className="flex flex-row justify-center items-center gap-2">
-            {Button.map(({ text, icon: Icon, onClickFunction }, index) => (
+            {Button.map(({ text, icon: Icon }, index) => (
 
-              <button key={index} onClick={onClickFunction} className="w-25 h-10 flex flex-row justify-center items-center gap-2 rounded-xl text-xs bg-editor-button-bg text-editor-button-text">
+              <button key={index} onClick={() => { if (index === 0) { openFileExplorer() } }} className="w-25 h-10 flex flex-row justify-center items-center gap-2 rounded-xl text-xs bg-editor-button-bg text-editor-button-text">
                 <Icon size={16} />
                 <p>{text}</p>
               </button>
             ))}
           </div>
+
         </div>
       }
 
-      {enableEditor &&
+      {
+        enableEditor &&
         <Editor
           height="100vh"
           width="50vw"
@@ -84,6 +86,6 @@ export default function MDEditor({
           }}
         />
       }
-    </section>
+    </section >
   );
 }
