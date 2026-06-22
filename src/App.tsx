@@ -10,7 +10,7 @@ function App() {
 
   return (
     <main className="bg-black w-screen h-screen flex flex-col">
-      <MenuBar setFilePath={setPath}></MenuBar>
+      <MenuBar path={path} setFilePath={setPath}></MenuBar>
       <div className="w-full h-full p-3 gap-3 flex flex-row justify-center items-center">
         <MDEditor filePath={path} setFilePath={setPath} value={value} setValue={setValue}></MDEditor>
         <MDPreview value={value} path={path}></MDPreview>

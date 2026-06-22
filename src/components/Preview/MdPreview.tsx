@@ -39,7 +39,7 @@ export default function MDPreview({ path, value }: { path: string, value: string
         <p className="text-text-secondary text-xs">{NoPreviewBodyText}<br />{NoPreviewBodyTextAfterBr}</p>
 
       </div>}
-      {enablePreview && <div className="markdown-body w-full h-full rounded-3xl" dangerouslySetInnerHTML={{ __html: html }}></div>}
+      {enablePreview && <div className="markdown-body w-full h-full p-5 rounded-3xl" dangerouslySetInnerHTML={{ __html: html }}></div>}
     </section>
   )
 }
